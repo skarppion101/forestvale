@@ -71,7 +71,7 @@ export const Header = ({ scroll = 0, defaultPos, onPlay }: Props): JSX.Element =
         >
           <div className="header-logo-wrapper-links">
             <a
-              href="https://atlantis.ageofmining.com/"
+              href="https://atlantis.ageofmining.io/"
               target="_blank"
               rel="noreferrer"
               onMouseOver={() => {
@@ -100,7 +100,7 @@ export const Header = ({ scroll = 0, defaultPos, onPlay }: Props): JSX.Element =
               {t`forestvale`}
             </button>
             <a
-              href="https://icevale.vercel.app/"
+              href="https://icevale.ageofmining.io/"
               target="_blank"
               rel="noreferrer"
               onMouseOver={() => {
@@ -253,7 +253,7 @@ export const Header = ({ scroll = 0, defaultPos, onPlay }: Props): JSX.Element =
         <div className="header-logo-wrapper">
           <div className="header-logo-wrapper-links">
             <a
-              href="https://atlantis.ageofmining.com/"
+              href="https://atlantis.ageofmining.io/"
               target="_blank"
               rel="noreferrer"
               onMouseOver={() => {
@@ -282,7 +282,7 @@ export const Header = ({ scroll = 0, defaultPos, onPlay }: Props): JSX.Element =
               {t`forestvale`}
             </button>
             <a
-              href="https://icevale.vercel.app/"
+              href="https://icevale.ageofmining.io/"
               target="_blank"
               rel="noreferrer"
               onMouseOver={() => {
