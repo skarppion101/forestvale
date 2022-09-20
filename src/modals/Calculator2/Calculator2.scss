@@ -1,0 +1,121 @@
+@import "src/styles/mixins";
+
+.calculator2 {
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+
+    @include respond(md) {
+      flex-direction: column;
+    }
+  }
+
+  &-content {
+    &.second {
+    }
+  }
+
+  &-plus {
+    margin: 0 20px;
+    font-size: 30px;
+    height: 360px;
+    align-items: flex-end;
+    display: flex;
+
+    @include respond(md) {
+      height: 0;
+    }
+  }
+  &-desc {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    width: 100%;
+    margin: 0 auto 15px auto;
+    color: #2D1F0A;
+    text-align: center;
+
+    @include respond(md) {
+      font-size: 12px;
+      line-height: 12px;
+      width: 296px;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  &-desc-2 {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0 0 12px 0;
+    color: #2D1F0A;
+    text-align: center;
+
+    @include respond(md) {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  &-tooltip {
+    margin-top: 76px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    margin-left: -15px;
+
+    @include respond(md) {
+      margin-top: 10px;
+      margin-left: 150px;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-input {
+    margin: 0 auto 16px auto;
+  }
+
+  &-bar {
+    width: 648px;
+    margin-left: 104px;
+
+    @include respond(md) {
+      margin-left: 35px;
+      width: 281px;
+      overflow: scroll;
+    }
+  }
+
+  &-arrow {
+    width: 24px;
+    display: block;
+    margin: 0 auto 10px auto;
+  }
+
+  &-bg {
+    margin-left: 72px;
+
+    @include respond(md) {
+      margin-left: 20px;
+      width: 310px;
+    }
+  }
+
+  &-text {
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    line-height: 18px;
+    color: #2D1F0A;
+    margin: 0 auto 16px auto;
+
+    @include respond(md) {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}

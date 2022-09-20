@@ -1,0 +1,65 @@
+@import "src/styles/mixins";
+@import "src/styles/constants";
+
+.languages {
+  position: relative;
+  z-index: 10;
+
+  &-preview {
+    display: flex;
+    background-color: initial;
+    border: none;
+    cursor: none;
+    align-items: center;
+    outline: none;
+  }
+
+  &-icon {
+    width: 27px;
+    height: 18px;
+    border-radius: 4px;
+  }
+
+  &-arrow {
+    transition: 0.1s;
+    margin-left: 4px;
+
+    path {
+      transition: 0.1s;
+    }
+
+    &.active {
+      transform: rotate(180deg);
+
+      path {
+        fill: #F9E17F;
+      }
+    }
+  }
+
+  &-dropdown {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    display: flex;
+    top: 30px;
+    left: -3px;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 10;
+
+    &-item {
+      background-color: initial;
+      border: none;
+      padding: 12px 13px;
+      cursor: none;
+      outline: none;
+      transition: 0.1s;
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.42);;
+      }
+    }
+  }
+}

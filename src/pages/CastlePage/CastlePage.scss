@@ -1,0 +1,54 @@
+@import "src/styles/mixins";
+
+.castle-page-wrapper {
+  cursor: none !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.castle-page {
+  cursor: none !important;
+
+  &-timer {
+    position: absolute;
+    top: 450px;
+    right: 310px;
+  }
+
+  &-ref {
+    position: absolute;
+    top: 550px;
+    left: 370px;
+  }
+  &-calc {
+    position: absolute;
+    top: 870px;
+    left: 730px;
+  }
+
+  &-elvina {
+    position: absolute;
+    top: 1100px;
+    right: 160px;
+  }
+
+  &-img {
+    width: 1700px;
+  }
+
+  &-img-other {
+    width: 630px;
+    position: absolute;
+    z-index: 4;
+    top: 1410px;
+    left: 640px;
+  }
+
+  &-elvina-npc {
+    margin: 50px 0 0 48px;
+
+    @include respond(md) {
+      margin: 20px auto 0 auto;
+    }
+  }
+}

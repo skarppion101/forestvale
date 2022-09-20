@@ -1,0 +1,60 @@
+@import "src/styles/mixins";
+
+.calculator {
+  &-desc {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0 auto 30px auto;
+    color: #2D1F0A;
+    text-align: center;
+
+    @include respond(md) {
+      font-size: 12px;
+      line-height: 12px;
+      width: 296px;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  &-desc-2 {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0 0 12px 0;
+    color: #2D1F0A;
+    text-align: center;
+
+    @include respond(md) {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  &-input {
+    margin: 0 auto 16px auto;
+  }
+
+  &-arrow {
+    width: 24px;
+    display: block;
+    margin: 0 auto 16px auto;
+  }
+
+  &-text {
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    display: block;
+    line-height: 18px;
+    color: #2D1F0A;
+    margin: 0 auto 16px auto;
+    @include respond(md) {
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+}

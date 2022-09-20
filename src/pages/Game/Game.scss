@@ -1,0 +1,216 @@
+@import "src/styles/mixins";
+
+.game-wrapper {
+  cursor: none !important;
+}
+
+.game {
+  cursor: none !important;
+
+  &-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+    background-size: cover;
+    opacity: 1;
+    transition: 0.2s;
+
+    &.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    &-btn {
+      position: absolute;
+      z-index: 9999;
+      height: 60px;
+      top: auto;
+      bottom: 100px;
+    }
+
+    &-img {
+      width: 110%;
+      height: 110%;
+
+      @include respond(md) {
+        width: auto;
+        height: 100%;
+      }
+    }
+  }
+
+  &-content {
+    &-open {
+      display: none;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      top: 16px;
+      left: 16px;
+      position: fixed;
+      background-color: rgba(0, 0, 0, 0.6);
+      border: none;
+      padding: 0;
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      z-index: 5;
+
+      img {
+        width: 16px;
+      }
+
+      @include respond(md) {
+        display: flex;
+      }
+    }
+
+    &-user {
+      position: fixed;
+      top: 36px;
+      left: 36px;
+      z-index: 15;
+
+      @include respond(md) {
+        top: 16px;
+        left: 16px;
+        display: none;
+
+        &.show {
+          display: block;
+        }
+      }
+    }
+
+    &-menu {
+      position: fixed;
+      top: 36px;
+      right: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      z-index: 11;
+
+      &-btn {
+        background-color: initial;
+        border: none;
+        cursor: none;
+        text-align: end;
+
+        img {
+          width: 89px;
+
+          @include respond(md) {
+            width: 39px;
+          }
+        }
+      }
+
+      &-content {
+        padding: 18px 22px 2px 22px;
+        display: flex;
+        flex-direction: column;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 12px 0 12px 12px;
+
+        &-btn {
+          background-color: initial;
+          text-align: end;
+          border: none;
+          font-weight: 400;
+          cursor: none;
+          padding: 0;
+          font-size: 16px;
+          line-height: 16px;
+          margin-bottom: 16px;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
+
+      @include respond(md) {
+        top: 15px;
+        right: 15px;
+      }
+    }
+    &-temple-btn {
+      z-index: 5;
+      position: absolute;
+      top: 350px;
+      left: 1095px;
+    }
+    &-castle-room-btn {
+      z-index: 5;
+      position: absolute;
+      top: 900px;
+      left: 1070px;
+    }
+    &-dungeon-btn {
+      z-index: 5;
+      position: absolute;
+      top: 1410px;
+      left: 1430px;
+    }
+
+    &-wishing-btn {
+      z-index: 5;
+      position: absolute;
+      top: 1580px;
+      left: 1075px;
+    }
+
+    &-matilda-btn {
+      z-index: 5;
+      position: absolute;
+      top: 1770px;
+      left: 830px;
+    }
+
+    &-elvina-btn {
+      z-index: 5;
+      position: absolute;
+      top: 1650px;
+      left: 1260px;
+    }
+  }
+
+  &-img {
+    width: 2500px;
+  }
+
+  &-img-other {
+    width: 630px;
+    position: absolute;
+    z-index: 4;
+    top: 1450px;
+    left: 885px;
+  }
+
+  &-lang {
+    position: fixed;
+    top: 70px;
+    right: 146px;
+
+    @include respond(md) {
+      right: 70px;
+      top: 26px;
+    }
+  }
+
+  &-elvina-npc {
+    margin: 50px 0 0 48px;
+
+    @include respond(md) {
+      margin: 20px auto 0 auto;
+    }
+  }
+}

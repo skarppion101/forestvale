@@ -1,0 +1,105 @@
+@import "src/styles/constants";
+@import "src/styles/mixins";
+
+.hives {
+  padding: 16px;
+  width: 258px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+
+  @include respond(md) {
+    padding: 15px;
+    width: calc(100% - 60px);
+  }
+
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 14px;
+
+    &-btn {
+      background-color: initial;
+      padding: 0;
+      border: none;
+    }
+  }
+
+  &-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+
+    &-left {
+      display: flex;
+
+      &-img {
+        width: 16px;
+        margin-right: 6px;
+      }
+    }
+  }
+
+  &-input-wrapper {
+    position: relative;
+    display: flex;
+  }
+
+  &-input {
+    margin-bottom: 16px;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 14px;
+    text-align: left;
+    padding: 8px 50px 8px 10px;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 6px;
+    width: 100%;
+    border: none;
+    color: #fff;
+    outline: none;
+
+    &-append {
+      position: absolute;
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 17px;
+      top: 8px;
+      right: 10px;
+      color: #fff;
+      opacity: 0.5;
+      z-index: 2;
+    }
+
+    &::placeholder {
+      color: #fff;
+      opacity: 0.5;
+      font-size: 12px;
+    }
+  }
+
+  &-btn {
+    width: 100% !important;
+    height: 57px !important;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 14px;
+    font-family: $default-font !important;
+
+    &.first-child {
+      margin-bottom: 16px;
+    }
+
+    @include respond(md) {
+      width: 226px !important;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}

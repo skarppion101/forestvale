@@ -1,0 +1,38 @@
+@import "src/styles/mixins";
+@import "src/styles/constants";
+
+.custom-button-game {
+  border: none;
+  background-color: initial;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 15px;
+  cursor: none;
+  transition: 0.2s;
+  color: #fff;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  outline: none;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 334px;
+  height: 85px;
+  padding-top: 10px;
+  font-family: $game-font !important;
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.long {
+    width: 397px;
+    height: 85px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}

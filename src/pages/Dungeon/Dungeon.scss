@@ -1,0 +1,28 @@
+@import "src/styles/mixins";
+
+.dungeon-wrapper {
+  cursor: none !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.dungeon {
+  cursor: none !important;
+
+  &-summoner {
+    position: absolute;
+    bottom: 720px;
+    left: 745px;
+  }
+
+  &-alisha {
+    position: absolute;
+    top: 930px;
+    left: 325px;
+  }
+
+  &-img {
+    width: 1800px;
+  }
+}

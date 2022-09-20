@@ -1,0 +1,127 @@
+@import "src/styles/constants";
+@import "src/styles/mixins";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000000;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &-backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  &-content {
+    width: 100%;
+    z-index: 1001;
+    height: 100%;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &-content-second {
+    width: 100%;
+    z-index: 1001;
+    height: 274px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.big {
+      height: 376px;
+    }
+
+    &-inside {
+      display: flex;
+      margin: 51px 58px 0 46px;
+      width: 100%;
+
+      &-img {
+        width: 124px;
+        height: 124px;
+        background: #E2CFB5;
+        border: 6px solid #7E5C29;
+        margin-right: 28px;
+        border-radius: 100%;
+
+        &.noBorder {
+          border: none;
+          width: 130px;
+        }
+
+        @include respond(md) {
+          margin-right: 0;
+          margin-bottom: 18px;
+        }
+      }
+
+      &-text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 22px;
+        white-space: break-spaces;
+        color: #2D1F0A;
+
+        @include respond(md) {
+          text-align: center;
+          width: 83%;
+        }
+      }
+
+      @include respond(md) {
+        flex-direction: column;
+        align-items: center;
+        margin: 37px 0 0 0;
+      }
+    }
+
+    @include respond(md) {
+      height: 364px;
+      margin-top: 20px;
+
+      &.big {
+        height: 505px;
+      }
+    }
+  }
+
+  &-header-title2 {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 15px;
+    text-align: center;
+    font-family: $game-font;
+    width: 334px;
+    color: #FFFFFF;
+    margin-left: 27px;
+    padding-top: 40px;
+    margin-top: 0;
+
+    @include respond(md) {
+      margin-left: 7px;
+    }
+  }
+
+  @include respond(md) {
+    justify-content: flex-start;
+  }
+}

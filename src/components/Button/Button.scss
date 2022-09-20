@@ -1,0 +1,43 @@
+@import "src/styles/mixins";
+
+.custom-button {
+  border: none;
+  padding: 16px 47px;
+  background: radial-gradient(215.38% 732.88% at -29.32% -88.46%, #F8E584 0%, #B7863A 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+  border-radius: 12px;
+  cursor: none;
+  transition: 0.2s;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+  box-shadow: 0 4px 10px rgba(4, 26, 13, 0.25);
+  top: 0;
+  color: #fff;
+  position: relative;
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.animate {
+    &:hover {
+      top: -5px;
+    }
+  }
+
+  &.dark {
+    background: radial-gradient(215.38% 732.88% at -29.32% -88.46%, #242E51 0%, #100F21 100%) /* warning: gradient uses a rotation that is not supported by CSS and may not behave as expected */;
+    box-shadow: 0 4px 10px rgba(4, 26, 13, 0.25);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  @include respond(md) {
+    padding: 14px 30px;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 30px;
+  }
+}

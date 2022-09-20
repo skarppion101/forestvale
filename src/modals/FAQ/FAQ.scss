@@ -1,0 +1,56 @@
+@import "src/styles/mixins";
+
+.faq {
+  &-desc {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    margin: 0 0 30px 0;
+    color: #2D1F0A;
+    text-align: center;
+    white-space: break-spaces;
+
+    @include respond(md) {
+      font-size: 12px;
+      line-height: 12px;
+      margin: 0 auto 16px auto;
+      width: 296px;
+
+      br {
+        display: none;
+      }
+    }
+  }
+
+  .modal-header-title {
+    margin-top: 5px !important;
+
+    @include respond(md) {
+      margin-top: -5px !important;
+    }
+  }
+
+  &-content-wrapper {
+    overflow: scroll;
+    height: 650px;
+
+    @include respond(md) {
+      height: 735px;
+      padding: 0 10px;
+    }
+  }
+
+  &-scroll {
+    width: 90%;
+    margin: auto auto 30px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    //@include respond(md) {
+    //  max-height: 300px;
+    //  overflow: scroll;
+    //}
+  }
+}

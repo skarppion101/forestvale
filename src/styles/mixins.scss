@@ -1,0 +1,34 @@
+@mixin respond($breakpoint) {
+  // Extra small devices (portrait phones, less than 576px)
+  @if $breakpoint==xs {
+    @media (max-width: 575.98px) { @content; }
+  }
+
+  // Small devices (landscape phones, less than 768px)
+  @if $breakpoint==sm {
+    @media (max-width: 767.98px) { @content; }
+  }
+
+  // Medium devices (tablets, less than 992px)
+  @if $breakpoint==md {
+    @media (max-width: 991.98px) { @content; }
+  }
+
+  // Large devices (desktops, less than 1200px)
+  @if $breakpoint==lg {
+    @media (max-width: 1199.98px) { @content; }
+  }
+}
+
+@mixin flexBox($direction: "row", $justify: null, $align: null) {
+  flex-direction: #{$direction};
+  display: flex;
+
+  @if $justify != null {
+    justify-content: #{$justify};
+  }
+
+  @if $align != null {
+    align-items: #{$align};
+  }
+}

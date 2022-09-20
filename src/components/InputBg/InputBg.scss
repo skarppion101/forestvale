@@ -1,0 +1,79 @@
+@import "src/styles/mixins";
+
+.custom-input-bg {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  padding: 25px 32px;
+  background-color: initial;
+  width: 100%;
+  border: none;
+  color: #2D1F0A;
+  outline: none;
+
+  &.withAppend {
+    padding: 25px 90px 25px 32px;
+
+    @include respond(md) {
+      padding: 15px 60px 15px 32px;
+    }
+  }
+
+  &-append {
+    position: absolute;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    top: 23px;
+    right: 32px;
+    color: #2D1F0A;
+    z-index: 2;
+
+    @include respond(md) {
+      top: 26px;
+      right: 32px;
+    }
+  }
+
+  &::placeholder {
+    color: rgba(45, 31, 10, 0.5);
+  }
+
+  @include respond(md) {
+    padding: 15px 22px;
+  }
+}
+
+.custom-input-wrapper-bg {
+  position: relative;
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 592px;
+  height: 60px;
+
+  &.small {
+    width: 296px;
+    height: 69px;
+
+    .custom-input-bg {
+      padding: 15px 22px;
+    }
+
+    .withAppend {
+      padding: 15px 60px 15px 32px;
+    }
+
+    .custom-input-bg-append {
+      top: 26px;
+      right: 32px;
+    }
+  }
+
+  @include respond(md) {
+    width: 296px;
+    height: 69px;
+  }
+}
+
+

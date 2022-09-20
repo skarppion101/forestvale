@@ -1,0 +1,44 @@
+@import "src/styles/constants";
+@import "src/styles/mixins";
+
+.room-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100000000;
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+
+  &.show {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &-backdrop {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  &-content {
+    width: 100%;
+    z-index: 1001;
+    height: 100%;
+    position: relative;
+    overflow: scroll;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    @include respond(md) {
+    }
+  }
+}

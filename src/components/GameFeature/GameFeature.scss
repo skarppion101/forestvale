@@ -1,0 +1,114 @@
+@import "src/styles/constants";
+@import "src/styles/mixins";
+
+.game-feature {
+  background: radial-gradient(26.77% 55.83% at 73.23% 44.17%, rgba(16, 15, 33, 0.94) 0%, #100F21 100%);
+  padding: 80px 15px 319px 15px;
+  background-size: cover;
+
+  &-title {
+    text-align: center;
+    font-weight: 600;
+    font-size: 46px;
+    line-height: 60px;
+    color: #F9E17F;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    margin: 0 0 86px 0;
+
+    @include respond(md) {
+      font-weight: 600;
+      font-size: 28px;
+      line-height: 60px;
+    }
+  }
+
+  &-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &-item {
+      border: 1px solid #F9E17F;
+      border-radius: 14px;
+      width: 306px;
+      height: 481px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin-right: 40px;
+      opacity: 0;
+
+      &.show {
+        opacity: 1;
+      }
+
+      &-btn {
+        position: absolute;
+        top: -41px;
+        left: -13px;
+        background-size: cover;
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        line-height: 30px;
+        font-family: $default-font !important;
+        text-transform: uppercase;
+        width: 334px;
+        height: 85px;
+      }
+
+      &-img-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 200px;
+        height: 200px;
+        min-height: 200px;
+        margin-top: 63px;
+        margin-bottom: 34px;
+      }
+
+      &-img {
+        width: 200px;
+      }
+
+      p {
+        margin: 0;
+        font-weight: 400;
+        font-size: 19px;
+        padding: 0 15px;
+        line-height: 25px;
+        color: #FFFFFF;
+        text-align: center;
+        text-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+
+        span {
+          color: #0DC1E9;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      @include respond(md) {
+        margin-right: 0;
+        margin-bottom: 56px;
+        height: 447px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @include respond(md) {
+      flex-direction: column;
+    }
+  }
+
+  @include respond(md) {
+    padding: 42px 15px 148px 15px;
+  }
+}

@@ -1,0 +1,115 @@
+@import "src/styles/mixins";
+
+.castle {
+  position: relative;
+
+  &-gif {
+    position: absolute;
+    width: 124px;
+    top: 25px;
+    left: 68px;
+
+    @include respond(md) {
+      display: none;
+    }
+  }
+
+  .modal-header {
+    margin-bottom: 68px;
+
+    @include respond(md) {
+      margin-bottom: 28px;
+    }
+  }
+
+  &-block {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 72px 16px 72px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #2D1F0A;
+
+    &-left {
+      &-title {
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 18px;
+        color: #2D1F0A;
+        margin-bottom: 8px;
+
+        img {
+          width: 18px;
+          margin-right: 6px;
+        }
+
+        @include respond(md) {
+          font-size: 12px;
+          line-height: 12px;
+        }
+      }
+
+      &-desc {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        color: #846E4D;
+        @include respond(md) {
+          font-size: 12px;
+          line-height: 12px;
+        }
+      }
+    }
+
+    @include respond(md) {
+      margin: 0 26px 12px 26px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  &-input {
+    margin: 16px auto 0 auto;
+  }
+
+  &-btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+
+    &-other {
+      display: flex;
+
+      @include respond(md) {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column-reverse;
+      }
+    }
+
+    &-item {
+      margin-bottom: 15px;
+
+      @include respond(md) {
+        margin-bottom: 0;
+      }
+    }
+
+    &-item-other {
+      margin-right: 15px;
+
+      @include respond(md) {
+        margin-right: 0;
+      }
+    }
+
+    @include respond(md) {
+      margin-top: 0;
+    }
+  }
+}

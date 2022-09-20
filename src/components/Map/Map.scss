@@ -1,0 +1,32 @@
+@import "src/styles/mixins";
+@import "src/styles/constants";
+
+.map {
+  position: fixed;
+  z-index: 100;
+  right: 36px;
+  bottom: 36px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  width: 100px;
+  font-family: $game-font !important;
+  height: 54px;
+  color: #fff;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: none;
+  transition: 0.1s;
+
+  svg {
+    margin-right: 10px;
+  }
+
+  @include respond(md) {
+    right: 16px;
+    bottom: 16px;
+  }
+}

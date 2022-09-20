@@ -1,0 +1,28 @@
+@import "src/styles/mixins";
+
+.lost-temple-wrapper {
+  cursor: none !important;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.lost-temple {
+  cursor: none !important;
+  height: 100%;
+
+  &-faq {
+    position: absolute;
+    top: 510px;
+    right: 460px;
+  }
+
+  &-slime {
+    position: absolute;
+    top: 600px;
+    left: 80px;
+  }
+
+  &-img {
+    width: 1800px;
+  }
+}

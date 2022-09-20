@@ -1,0 +1,35 @@
+@import "src/styles/mixins";
+@import "src/styles/constants";
+
+.custom-button-connect {
+  border: none;
+  background-color: initial;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 22px;
+  cursor: none;
+  transition: 0.2s;
+  color: #312020;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 412px;
+  height: 94px;
+  text-decoration: none;
+  font-family: $game-font !important;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  @include respond(md) {
+    width: 312px;
+    font-size: 16px;
+    line-height: 16px;
+    height: 60px;
+  }
+}

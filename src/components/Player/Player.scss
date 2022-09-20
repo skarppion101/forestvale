@@ -1,0 +1,43 @@
+@import "src/styles/mixins";
+
+.player-wrapper {
+  position: fixed;
+  z-index: 100;
+  left: 36px;
+  bottom: 36px;
+
+  @include respond(md) {
+    left: 16px;
+    bottom: 16px;
+  }
+
+  &.hide {
+    opacity: 0;
+  }
+
+  .player {
+    display: none;
+  }
+
+  .player-content {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .player-btn {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 12px;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    cursor: none;
+    transition: 0.1s;
+  }
+}

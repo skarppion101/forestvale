@@ -1,0 +1,38 @@
+@import "src/styles/mixins";
+
+.polish {
+  th {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    text-align: center;
+    color: #2D1F0A;
+  }
+
+  &-warning {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: -10px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 18px;
+    color: #2D1F0A;
+  }
+
+  table {
+    background: #C7B393;
+    border-radius: 15px;
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+  }
+
+  td {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 16px;
+    color: #2D1F0A;
+    text-align: center;
+    padding: 20px 0 0 0;
+  }
+}

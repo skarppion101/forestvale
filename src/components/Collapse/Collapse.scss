@@ -1,0 +1,93 @@
+@import "src/styles/mixins";
+
+.collapse-wrapper {
+  overflow: hidden;
+  position: relative;
+  transition: 0.7s;
+  width: 99%;
+  border-radius: 13px;
+  margin-bottom: 20px;
+  padding-right: 3px;
+  padding-bottom: 22px;
+  min-height: 46px;
+
+  .collapse-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    transition: 0.5s;
+    padding: 22px 20px;
+    background: #C7B393;
+    box-shadow: 2px 4px 0 #C09E6C;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 18px;
+    color: #2D1F0A;
+    outline: none;
+    border: none;
+    z-index: 2;
+    position: relative;
+    cursor: none;
+    text-align: left;
+
+    @include respond(md) {
+      padding: 22px 30px 22px 20px;
+    }
+  }
+
+  .collapse-arrow {
+    transition: 0.5s;
+    min-width: 28px;
+    min-height: 20px;
+
+    @include respond(md) {
+      margin-left: 10px;
+    }
+  }
+
+  .collapse-content {
+    background: #C7B393;
+    border-radius: 12px;
+    z-index: 1;
+    margin-top: -18px;
+    max-height: 0;
+    transition: 0.7s;
+
+    &-desc {
+      background: #C7B393;
+      font-weight: 300;
+      font-size: 18px;
+      line-height: 18px;
+      color: #2D1F0A;
+      margin: 0;
+      padding: 44px 30px 26px 30px;
+      border-radius: 12px;
+      box-shadow: 2px 4px 0 #C09E6C;
+
+      @include respond(md) {
+        padding: 34px 20px 24px 20px;
+      }
+    }
+  }
+
+  &.open {
+    .collapse-content {
+      max-height: 1800px;
+
+      @include respond(md) {
+        max-height: 2550px;
+        transition: 1s;
+      }
+    }
+    .collapse-title {
+      background: #A48C65;
+      box-shadow: 2px 4px 0 #7E5C29;
+    }
+
+    .collapse-arrow {
+      transform: rotate(180deg);
+    }
+  }
+}

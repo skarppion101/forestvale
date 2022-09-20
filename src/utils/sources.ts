@@ -1,0 +1,16 @@
+export const hrefs = {
+  facebook: "",
+  instagram: "",
+  scan: "https://bscscan.com/address/0xd236a4c897cbdd937f199f2977c22570f64efb24",
+  twitter: "https://twitter.com/Age_of_Mining",
+  youtube: "https://www.youtube.com/c/AgeofMining_official",
+  discord: "",
+  docs: "https://docs.forestvale.ageofmining.com/",
+  telegram: "https://t.me/ageofmining",
+  appStore: "",
+  googlePlay: "",
+  audit: "https://docs.forestvale.ageofmining.com/important/audit",
+  analitic: "https://bscscan.com/address/0xd236a4c897cbdd937f199f2977c22570f64efb24#analytics",
+  bug: "https://forms.gle/Wbtd2dhebGUQABPcA",
+  connect: "https://forms.gle/XtRPik9yLwGtZu6u9",
+}
