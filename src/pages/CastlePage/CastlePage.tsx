@@ -43,6 +43,7 @@ export const CastlePage = (): JSX.Element => {
   const [marketTokens, setMarketTokens] = useState(0)
   const [calculator, setCalculator] = useState(false)
   const [timer, setTimer] = useState(false)
+  const [balance, setBalance] = useState(0)
   const [loading, setLoading] = useState(true)
   const [allTransactionsCount, setAllTransactionsCount] = useState(0)
   const isM = useMedia({ maxWidth: mixins.m })
@@ -81,6 +82,10 @@ export const CastlePage = (): JSX.Element => {
     // @ts-ignore
     const { ethereum } = window
     const provider = new ethers.providers.Web3Provider(ethereum)
+
+    api.getBalance(account || '').then((r: any) => {
+      setBalance(Number(r.result) / busd)
+    })
 
     const nftContract = new ethers.Contract(contractAddress, abi, provider)
     const totalUsers = await nftContract.countUsers()
@@ -155,6 +160,7 @@ export const CastlePage = (): JSX.Element => {
         <img src={snowSrc} alt="snow" />
       </button>
       <Hives
+        balance={balance}
         updateState={getAllInfo}
         token={token}
         miners={miners}

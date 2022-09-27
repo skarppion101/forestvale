@@ -15,7 +15,12 @@ export class Api extends HttpClient {
       `/api?module=account&action=txlist&address=0xd236a4c897cbdd937f199f2977c22570f64efb24&startblock=1&endblock=99999999&sort=desc&apikey=Z9T7GVUPQ9S8K4TY79R52YUUE54AAUA1H5`,
     )
   }
-  public getBalance = () => {
+  public getBalance = (user: string) => {
+    return this.instance.get<any[]>(
+      `/api?module=account&action=tokenbalance&contractaddress=0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56&address=${user}&tag=latest&apikey=Z9T7GVUPQ9S8K4TY79R52YUUE54AAUA1H5`,
+    )
+  }
+  public getBalanceContract = () => {
     return this.instance.get<any[]>(
       `/api?module=account&action=tokenbalance&contractaddress=0xe9e7cea3dedca5984780bafc599bd69add087d56&address=0xa125d893577f264eDC7Eb42d01550aCA2229dB9D&tag=latest&apikey=Z9T7GVUPQ9S8K4TY79R52YUUE54AAUA1H5`,
     )

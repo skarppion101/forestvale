@@ -22,6 +22,7 @@ import { links } from "../Game/utils"
 import menuSrc from "../../assets/images/snowballmenu.gif.webp"
 import { t } from "@lingui/macro"
 import snowSrc from "../../assets/images/snow-small.webp";
+import {api} from "../../service/api/api";
 
 export const Dungeon = (): JSX.Element => {
   const [search] = useSearchParams()
@@ -36,6 +37,7 @@ export const Dungeon = (): JSX.Element => {
   const [loading, setLoading] = useState(true)
   const [polish, setPolish] = useState(false)
   const [menu, setMenu] = useState(false)
+  const [balance, setBalance] = useState(0)
   const [token, setToken] = useState(0)
   const [dropdown, setDropdown] = useState(false)
   const isM = useMedia({ maxWidth: mixins.m })
@@ -67,6 +69,11 @@ export const Dungeon = (): JSX.Element => {
     // @ts-ignore
     const { ethereum } = window
     const provider = new ethers.providers.Web3Provider(ethereum)
+
+    api.getBalance(account || '').then((r: any) => {
+      console.log(r)
+      setBalance(Number(r.result) / busd)
+    })
 
     const nftContract = new ethers.Contract(contractAddress, abi, provider)
 
@@ -152,6 +159,7 @@ export const Dungeon = (): JSX.Element => {
         <img src={snowSrc} alt="snow" />
       </button>
       <Hives
+        balance={balance}
         updateState={getAllInfo}
         token={token}
         miners={miners}
@@ -252,7 +260,7 @@ export const Dungeon = (): JSX.Element => {
         isOpen={harvest}
       />
       <Polish miners={miners} onClose={() => setPolish(false)} isOpen={polish} />
-      <Castle updateState={getAllInfo} miners={miners} bonus={bonus} onClose={() => setCastle(false)} isOpen={castle} />
+      <Castle balance={balance} updateState={getAllInfo} miners={miners} bonus={bonus} onClose={() => setCastle(false)} isOpen={castle} />
       <Map />
     </div>
   )

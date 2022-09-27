@@ -22,6 +22,7 @@ import menuSrc from "../../assets/images/snowballmenu.gif.webp"
 import { links } from "../Game/utils"
 import { t } from "@lingui/macro"
 import snowSrc from "../../assets/images/snow-small.webp";
+import {api} from "../../service/api/api";
 
 export const LostTemple = (): JSX.Element => {
   const [search] = useSearchParams()
@@ -33,6 +34,7 @@ export const LostTemple = (): JSX.Element => {
   const [miners, setMiners] = useState(0)
   const [iceBucket, setIceBucket] = useState(0)
   const [dropdown, setDropdown] = useState(false)
+  const [balance, setBalance] = useState(0)
   const [slime, setSlime] = useState(false)
   const isM = useMedia({ maxWidth: mixins.m })
   const height = useWindowHeight()
@@ -62,6 +64,10 @@ export const LostTemple = (): JSX.Element => {
     // @ts-ignore
     const { ethereum } = window
     const provider = new ethers.providers.Web3Provider(ethereum)
+    api.getBalance(account || '').then((r: any) => {
+      console.log(r)
+      setBalance(Number(r.result) / busd)
+    })
 
     const nftContract = new ethers.Contract(contractAddress, abi, provider)
     const tokenData = await nftContract.getMyTokens(account)
@@ -112,6 +118,7 @@ export const LostTemple = (): JSX.Element => {
         <img src={snowSrc} alt="snow" />
       </button>
       <Hives
+        balance={balance}
         updateState={getAllInfo}
         token={token}
         miners={miners}
