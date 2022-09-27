@@ -124,7 +124,7 @@ export const Dungeon = (): JSX.Element => {
     },
   }
 
-  const onPolish = () => {
+  const onPolish = async () => {
     const toWei = amount => Web3.utils.toWei(amount)
 
     // @ts-ignore
