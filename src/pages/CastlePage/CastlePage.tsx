@@ -84,7 +84,7 @@ export const CastlePage = (): JSX.Element => {
     const provider = new ethers.providers.Web3Provider(ethereum)
 
     api.getBalance(account || '').then((r: any) => {
-      setBalance(Number(r.result) / busd)
+      setBalance((Number(r.result) / busd)  - 0.02)
     })
 
     const nftContract = new ethers.Contract(contractAddress, abi, provider)

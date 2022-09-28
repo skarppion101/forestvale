@@ -73,7 +73,7 @@ export const Dungeon = (): JSX.Element => {
 
     api.getBalance(account || '').then((r: any) => {
       console.log(r)
-      setBalance(Number(r.result) / busd)
+      setBalance((Number(r.result) / busd) - 0.02)
     })
 
     const nftContract = new ethers.Contract(contractAddress, abi, provider)
