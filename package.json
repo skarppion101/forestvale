@@ -89,5 +89,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "engines": {
+    "node":  "16.20.1",
+    "npm": "8.19.2"
   }
 }
